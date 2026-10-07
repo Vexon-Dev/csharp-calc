@@ -11,7 +11,16 @@ Console.Write("\nPlease input the operation you want to perform (+, -, *, /) : "
 string input = Console.ReadLine();
 if (!char.TryParse(input, out char operation))
 {
+    Console.ForegroundColor = ConsoleColor.Red;
     Console.Write("\nError! You can only input a single operation!");
+    Console.ResetColor();
+    return;
+} else if (operation != '+' && operation != '-' && operation != '*' && operation != '/')
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write($"\nError! Cannot operate with {operation}!");
+    Console.ResetColor();
+    return;
 }
 
 Console.Write("\nPlease input the amount of numbers you want to use in the operation: ");
@@ -25,6 +34,15 @@ for (int i = 0; i < numberAmount; i++)
     double number = double.Parse(Console.ReadLine());
     numberList.Add(number);
 }
+
+if (operation == '/' && numberList.Contains(0))
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write("\nError! Cannot divide by 0!");
+    Console.ResetColor();
+    return;
+}
+
 Console.Write($"\nThe numbers have been collected. There are {numberList.Count} numbers.");
 
 double result;
@@ -38,23 +56,46 @@ else
     result = 0;
 }
 
-foreach (double singleNumber in numberList)
+// foreach (double singleNumber in numberList)
+// {
+//     if (operation == '+')
+//     {
+//         result += singleNumber;
+//     } else if (operation == '-')
+//     {
+//         result -= singleNumber;
+//     } else if (operation == '*')
+//     {
+//         result *= singleNumber;
+//     }  else if (operation == '/')
+//     {
+//         result /= singleNumber;
+//     }
+// }
+
+if (operation == '+')
 {
-    if (operation == '+')
+    foreach (double singleNumber in numberList)
     {
         result += singleNumber;
-    } else if (operation == '-')
+    }
+} else if (operation == '-')
+{
+    foreach (double singleNumber in numberList)
     {
         result -= singleNumber;
-    } else if (operation == '*')
+    }
+}  else if (operation == '*')
+{
+    foreach (double singleNumber in numberList)
     {
         result *= singleNumber;
-    }  else if (operation == '/')
+    }
+} else if (operation == '/')
+{
+    foreach (double singleNumber in numberList)
     {
         result /= singleNumber;
-    } else
-    {
-        Console.Write("\nError! Wrong operation character!");
     }
 }
 
