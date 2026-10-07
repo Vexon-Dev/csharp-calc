@@ -4,7 +4,7 @@ using System.Threading;
 
 Console.Write("###################################################");
 Console.Write("\n                    Super calc                     ");
-Console.Write("###################################################");
+Console.Write("\n###################################################");
 Thread.Sleep(3000);
 
 Console.Write("\nPlease input the operation you want to perform (+, -, *, /) : ");
