@@ -31,6 +31,17 @@ if (!char.TryParse(input, out char operation))
 Console.Write("\nPlease input the amount of numbers you want to use in the operation: ");
 int numberAmount = int.Parse(Console.ReadLine());
 
+if (numberAmount < 2)
+{
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write($"\nError! Cannot operate on {numberAmount} number(s)!");
+    Console.ResetColor();
+    Console.Write("\nPress any key to exit...");
+    Console.ReadKey(intercept: true);
+    return;
+}
+
+
 List<double> numberList = new List<double>();
 
 for (int i = 0; i < numberAmount; i++)
@@ -40,7 +51,7 @@ for (int i = 0; i < numberAmount; i++)
     numberList.Add(number);
 }
 
-if (operation == '/' && numberList.Contains(0))
+if (operation == '/' && numberList.Skip(1).Contains(0))
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.Write("\nError! Cannot divide by 0!");
