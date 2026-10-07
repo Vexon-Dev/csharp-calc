@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 Console.Write("###################################################");
@@ -47,7 +48,10 @@ Console.Write($"\nThe numbers have been collected. There are {numberList.Count} 
 
 double result;
 
-if (operation == '*' || operation == '/')
+if (operation == '-' || operation == '/')
+{
+    result = numberList[0];
+} else if (operation == '*')
 {
     result = 1;
 }
@@ -81,7 +85,7 @@ if (operation == '+')
     }
 } else if (operation == '-')
 {
-    foreach (double singleNumber in numberList)
+    foreach (double singleNumber in numberList.Skip(1))
     {
         result -= singleNumber;
     }
@@ -93,7 +97,7 @@ if (operation == '+')
     }
 } else if (operation == '/')
 {
-    foreach (double singleNumber in numberList)
+    foreach (double singleNumber in numberList.Skip(1))
     {
         result /= singleNumber;
     }
