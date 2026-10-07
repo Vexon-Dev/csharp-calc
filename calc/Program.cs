@@ -59,3 +59,6 @@ foreach (double singleNumber in numberList)
 }
 
 Console.Write($"\nResult: {result}");
+Console.Write("\nPress any key to exit...");
+Console.ReadKey(intercept: true);
+Environment.Exit(0);
