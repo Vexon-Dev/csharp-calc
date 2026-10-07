@@ -15,12 +15,16 @@ if (!char.TryParse(input, out char operation))
     Console.ForegroundColor = ConsoleColor.Red;
     Console.Write("\nError! You can only input a single operation!");
     Console.ResetColor();
+    Console.Write("\nPress any key to exit...");
+    Console.ReadKey(intercept: true);
     return;
 } else if (operation != '+' && operation != '-' && operation != '*' && operation != '/')
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.Write($"\nError! Cannot operate with {operation}!");
     Console.ResetColor();
+    Console.Write("\nPress any key to exit...");
+    Console.ReadKey(intercept: true);
     return;
 }
 
@@ -41,6 +45,8 @@ if (operation == '/' && numberList.Contains(0))
     Console.ForegroundColor = ConsoleColor.Red;
     Console.Write("\nError! Cannot divide by 0!");
     Console.ResetColor();
+    Console.Write("\nPress any key to exit...");
+    Console.ReadKey(intercept: true);
     return;
 }
 
